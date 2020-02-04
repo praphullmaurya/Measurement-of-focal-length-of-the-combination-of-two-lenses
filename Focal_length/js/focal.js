@@ -57,7 +57,6 @@ var Simulation = function() {
             buttons[i].setAttribute("disabled", "true");
         }
         terminal.update("Simulator Stopped");
-        //reset();
     }
 };
 
@@ -594,8 +593,8 @@ function draw2() {
             context.fillStyle = "red";
             context.fill();
             context.stroke();
-        } else if (lx2 == 100) {
 
+        } else if (lx2 == 100) {
             context.moveTo(150, 180);
             context.lineTo(250, 180);
             context.lineTo(763, 454);
@@ -648,20 +647,14 @@ function draw2() {
     } else {
         var d = window.lx2 - window.lx1;
         df = d - k;
-        //console.log(k);
-        //console.log(df);
-        //console.log(d);
         u2 = df;
         var v2 = u2 * f2 / (u2 - f2);
-        //console.log(v2);
-        //console.log(lx2);
         var hi = 0;
         hi = (hi1 * (-1 * v2)) / u2;
         context.beginPath();
-        terminal.update("Distance B/W both Lens =" + d + " cm");
+        terminal.update("Distance b/w both Lens =" + d + " cm");
         terminal.update("Object distance from Lens B =" + df.toFixed(2) + " cm");
         terminal.update("Image distance from Lens B =" + v2.toFixed(2) + " cm");
-
 
         if (v2 > 130) {
             context.moveTo(window.di, window.ih1);
@@ -696,29 +689,7 @@ function draw2() {
             context.fillStyle = "red";
             context.fill();
             context.stroke();
-        }
-        /*else if (lx2 == 100) {
-            context.beginPath();
-            terminal.update("Image distance from Lens B =" + v2);
-
-            context.moveTo(150, 180);
-            context.lineTo(300, 180);
-            context.lineTo(955, 399);
-            context.strokeStyle = "Purple";
-            context.lineWidth = 3;
-            context.stroke();
-            context.closePath();
-
-            context.beginPath();
-            context.moveTo(150, 180);
-            context.lineTo(948, 446);
-            context.strokeStyle = "rgb(60, 60, 60)";
-            context.lineWidth = 3;
-            context.stroke();
-
-        }*/
-        else {
-            //alert();
+        } else {
             context.moveTo(window.di, window.ih1);
             context.lineTo(lx2 + 150, window.ih1);
             context.lineTo(150 + lx2 + v2, ly2 + hi);
@@ -757,26 +728,26 @@ function draw2() {
 
 function calcf1() {
 
-    var u11 = document.getElementById('u11').value;
-    var u12 = document.getElementById('u12').value;
-    var u13 = document.getElementById('u13').value;
-    var u14 = document.getElementById('u14').value;
-    var u15 = document.getElementById('u15').value;
+    var u11 = parseFloat(document.getElementById('u11').value);
+    var u12 = parseFloat(document.getElementById('u12').value);
+    var u13 = parseFloat(document.getElementById('u13').value);
+    var u14 = parseFloat(document.getElementById('u14').value);
+    var u15 = parseFloat(document.getElementById('u15').value);
 
-    var v11 = document.getElementById('v11').value;
-    var v12 = document.getElementById('v12').value;
-    var v13 = document.getElementById('v13').value;
-    var v14 = document.getElementById('v14').value;
-    var v15 = document.getElementById('v15').value;
+    var v11 = parseFloat(document.getElementById('v11').value);
+    var v12 = parseFloat(document.getElementById('v12').value);
+    var v13 = parseFloat(document.getElementById('v13').value);
+    var v14 = parseFloat(document.getElementById('v14').value);
+    var v15 = parseFloat(document.getElementById('v15').value);
 
     var x1 = parseFloat(parseFloat((u11 * v11) / (u11 + v11)).toFixed(2));
     var x2 = parseFloat(parseFloat((u12 * v12) / (u12 + v12)).toFixed(2));
     var x3 = parseFloat(parseFloat((u13 * v13) / (u13 + v13)).toFixed(2));
     var x4 = parseFloat(parseFloat((u14 * v14) / (u14 + v14)).toFixed(2));
     var x5 = parseFloat(parseFloat((u15 * v15) / (u15 + v15)).toFixed(2));
-    var x6 = ((x1 + x2 + x3 + x4 + x5) / 5).toFixed(2);
+    var x6 = parseFloat(((x1 + x2 + x3 + x4 + x5) / 5).toFixed(2));
     console.log(typeof(x6));
-    //var x6 = ((((u11*v11)/(u11+v11))+((u12*v12)/(u12+v12))+((u13*v13)/(u13+v13))+((u14*v14)/(u14+v14))+((u15*v15)/(u15+v15)))/5).toFixed(2);//
+    console.log(x6);
 
     document.getElementById('f11').innerHTML = x1;
     document.getElementById('f12').innerHTML = x2;
@@ -788,25 +759,24 @@ function calcf1() {
 
 function calcf2() {
 
-    var u21 = document.getElementById('u21').value;
-    var u22 = document.getElementById('u22').value;
-    var u23 = document.getElementById('u23').value;
-    var u24 = document.getElementById('u24').value;
-    var u25 = document.getElementById('u25').value;
+    var u21 = parseFloat(document.getElementById('u21').value);
+    var u22 = parseFloat(document.getElementById('u22').value);
+    var u23 = parseFloat(document.getElementById('u23').value);
+    var u24 = parseFloat(document.getElementById('u24').value);
+    var u25 = parseFloat(document.getElementById('u25').value);
 
-    var v21 = document.getElementById('v21').value;
-    var v22 = document.getElementById('v22').value;
-    var v23 = document.getElementById('v23').value;
-    var v24 = document.getElementById('v24').value;
-    var v25 = document.getElementById('v25').value;
+    var v21 = parseFloat(document.getElementById('v21').value);
+    var v22 = parseFloat(document.getElementById('v22').value);
+    var v23 = parseFloat(document.getElementById('v23').value);
+    var v24 = parseFloat(document.getElementById('v24').value);
+    var v25 = parseFloat(document.getElementById('v25').value);
 
     var x1 = parseFloat(parseFloat((u21 * v21) / (u21 + v21)).toFixed(2));
     var x2 = parseFloat(parseFloat((u22 * v22) / (u22 + v22)).toFixed(2));
     var x3 = parseFloat(parseFloat((u23 * v23) / (u23 + v23)).toFixed(2));
     var x4 = parseFloat(parseFloat((u24 * v24) / (u24 + v24)).toFixed(2));
     var x5 = parseFloat(parseFloat((u25 * v25) / (u25 + v25)).toFixed(2));
-    var x6 = ((x1 + x2 + x3 + x4 + x5) / 5).toFixed(2);
-    //var x6 = ((((u21*v21)/(u21+v21))+((u22*v22)/(u22+v22))+((u23*v23)/(u23+v23))+((u24*v24)/(u24+v24))+((u25*v25)/(u25+v25)))/5).toFixed(2);
+    var x6 = parseFloat(((x1 + x2 + x3 + x4 + x5) / 5).toFixed(2));
 
     document.getElementById('f21').innerHTML = x1;
     document.getElementById('f22').innerHTML = x2;
@@ -818,34 +788,51 @@ function calcf2() {
 
 function calcF() {
 
-    var f11 = document.getElementById('f11').value;
-    var f12 = document.getElementById('f12').value;
-    var f13 = document.getElementById('f13').value;
-    var f14 = document.getElementById('f14').value;
-    var f15 = document.getElementById('f15').value;
+    var f11 = parseFloat(document.getElementById('f11').value);
+    var f12 = parseFloat(document.getElementById('f12').value);
+    var f13 = parseFloat(document.getElementById('f13').value);
+    var f14 = parseFloat(document.getElementById('f14').value);
+    var f15 = parseFloat(document.getElementById('f15').value);
 
-    var f21 = document.getElementById('f21').value;
-    var f22 = document.getElementById('f22').value;
-    var f23 = document.getElementById('f23').value;
-    var f24 = document.getElementById('f24').value;
-    var f25 = document.getElementById('f25').value;
+    var f21 = parseFloat(document.getElementById('f21').value);
+    var f22 = parseFloat(document.getElementById('f22').value);
+    var f23 = parseFloat(document.getElementById('f23').value);
+    var f24 = parseFloat(document.getElementById('f24').value);
+    var f25 = parseFloat(document.getElementById('f25').value);
 
-    var d1 = document.getElementById('d1').value;
-    var d2 = document.getElementById('d2').value;
-    var d3 = document.getElementById('d3').value;
-    var d4 = document.getElementById('d4').value;
-    var d5 = document.getElementById('d5').value;
+    var d1 = parseFloat(document.getElementById('d1').value);
+    var d2 = parseFloat(document.getElementById('d2').value);
+    var d3 = parseFloat(document.getElementById('d3').value);
+    var d4 = parseFloat(document.getElementById('d4').value);
+    var d5 = parseFloat(document.getElementById('d5').value);
 
-    var F1 = document.getElementById('F1').value;
-    var F2 = document.getElementById('F2').value;
-    var F3 = document.getElementById('F3').value;
-    var F4 = document.getElementById('F4').value;
-    var F5 = document.getElementById('F5').value;
+    /*var F1 = parseFloat(document.getElementById('F1').value);
+    var F2 = parseFloat(document.getElementById('F2').value);
+    var F3 = parseFloat(document.getElementById('F3').value);
+    var F4 = parseFloat(document.getElementById('F4').value);
+    var F5 = parseFloat(document.getElementById('F5').value);
+    window.F = parseFloat(document.getElementById('meanF').value);*/
 
-    var x1 = parseFloat(parseFloat((u21 * v21) / (u21 + v21)).toFixed(2));
-    var x2 = parseFloat(parseFloat((u22 * v22) / (u22 + v22)).toFixed(2));
-    var x3 = parseFloat(parseFloat((u23 * v23) / (u23 + v23)).toFixed(2));
-    var x4 = parseFloat(parseFloat((u24 * v24) / (u24 + v24)).toFixed(2));
-    var x5 = parseFloat(parseFloat((u25 * v25) / (u25 + v25)).toFixed(2));
-    var x6 = ((x1 + x2 + x3 + x4 + x5) / 5).toFixed(2);
+    var x1 = parseFloat(parseFloat((f11 * f21) / (f11 + f21 - d1)).toFixed(2));
+    var x2 = parseFloat(parseFloat((f12 * f22) / (f12 + f22 - d2)).toFixed(2));
+    var x3 = parseFloat(parseFloat((f13 * f23) / (f13 + f23 - d3)).toFixed(2));
+    var x4 = parseFloat(parseFloat((f14 * f24) / (f14 + f24 - d4)).toFixed(2));
+    var x5 = parseFloat(parseFloat((f15 * f25) / (f15 + f25 - d5)).toFixed(2));
+    window.x6 = parseFloat(((x1 + x2 + x3 + x4 + x5) / 5).toFixed(2));
+    var meanv = parseFloat(document.getElementById("meanF").value);
+
+    if ((window.x6).toFixed(0) == meanv.toFixed(0)) {
+        terminal.update("Correct Result");
+    } else {
+        terminal.update("Incorrect Result");
+    }
+
+}
+
+function verifyF() {
+    var calcf = window.x6;
+    var res = parseFloat(document.getElementById("meanF").value);
+    var perError = 100 * (calcf - res) / calcf;
+    document.getElementById('verify').innerHTML = "Percentage Error : " + perError.toFixed(2) + "%";
+    terminal.update("Percentage Error : " + perError.toFixed(2) + "%");
 }
