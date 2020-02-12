@@ -826,7 +826,6 @@ function calcF() {
     } else {
         terminal.update("Incorrect Result");
     }
-
 }
 
 function verifyF() {
